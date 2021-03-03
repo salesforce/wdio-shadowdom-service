@@ -1,0 +1,41 @@
+<!--
+  Copyright (c) 2021, salesforce.com, inc.
+  All rights reserved.
+  SPDX-License-Identifier: BSD-3-Clause
+  For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shadow DOM!</title>
+</head>
+<body>
+
+<h1>Shadow Dom!</h1>
+
+<div class="outer">
+    <another-component class="custom"></another-component>
+</div>
+<div id="hello-world">Hello other shadow!</div>
+<script type="module">
+    class AnotherComponent extends HTMLElement {
+        constructor() {
+            super();
+            const shadowRoot = this.attachShadow({mode: 'open'});
+            shadowRoot.innerHTML = `
+          <div class="inner">
+            <div class="text">Hello from the other shadow DOM</div>
+          </div>
+        `
+        }
+    }
+
+    customElements.define('another-component', AnotherComponent);
+
+    const div = document.createElement('div')
+    div.className = 'done'
+    document.body.appendChild(div)
+</script>
+</body>
+</html>
