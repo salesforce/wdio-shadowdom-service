@@ -7,7 +7,7 @@
 <body>
 <div></div>
 <script>
-  // Don't allow anyone to write window.__kagekiri__
+  // Detect when someone writes to window.__kagekiri__
   let value
   Object.defineProperty(window, '__kagekiri__', {
     get () {
