@@ -148,7 +148,7 @@ describe('plugin', () => {
       expect(await (await $('.text')).getText()).to.equal('Hello from the other shadow DOM')
     })
 
-    it('recovers from invalid CSS selector', async () => {
+    it('throws an error on an invalid CSS selector', async () => {
       const fails = async () => {
         await (await $('.invalid;')).getText()
       }
