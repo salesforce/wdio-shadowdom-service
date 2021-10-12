@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Autorefreshes</title>
+</head>
+<body>
+<div></div>
+<script>
+  // Don't allow anyone to write window.__kagekiri__
+  let value
+  Object.defineProperty(window, '__kagekiri__', {
+    get () {
+      return value
+    },
+    set (newValue) {
+      value = newValue
+      if (window.location.search !== '?refreshed=true') {
+        // simluate a page that redirects after window.__kagekiri__ is set
+        setTimeout(() => {
+          window.location.search = '?refreshed=true'
+        })
+      }
+    },
+  })
+  if (window.location.search === '?refreshed=true') {
+    document.querySelector('div').attachShadow({ mode: 'open' }).innerHTML = '<span>find me!</span>'
+  }
+</script>
+</body>
+</html>
