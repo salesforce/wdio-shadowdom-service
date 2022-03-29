@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/wdio-shadowdom-service
     docker:
-      - image: cimg/node-browsers:16.14.0
+      - image: cimg/node:16.14.0-browsers
     steps:
       - checkout
       - restore_cache: # special step to restore the dependency cache https://circleci.com/docs/2.0/caching/
