@@ -4,7 +4,6 @@
  * SPDX-License-Identifier: BSD-3-Clause
  * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
-const { promisify } = require('util')
 const path = require('path')
 const selenium = require('selenium-standalone')
 const express = require('express')
@@ -15,7 +14,7 @@ let seleniumServer
 let staticServer
 
 async function startSeleniumServer () {
-  seleniumServer = await promisify(selenium.start)()
+  seleniumServer = await selenium.start()
 }
 
 function stopSeleniumServer () {
