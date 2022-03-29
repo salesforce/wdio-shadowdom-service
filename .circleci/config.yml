@@ -9,13 +9,6 @@ jobs:
     steps:
       - browser-tools/install-browser-tools
       - checkout
-      - run: |
-          node --version
-          java --version
-          google-chrome --version
-          firefox --version
-          which google-chrome
-          which firefox
       - restore_cache: # special step to restore the dependency cache https://circleci.com/docs/2.0/caching/
           key: dependency-cache-{{ checksum "package-lock.json" }}
       - run:
