@@ -1,11 +1,21 @@
 version: 2.1
+orbs:
+  browser-tools: circleci/browser-tools@1.1.0
 jobs:
   build:
     working_directory: ~/wdio-shadowdom-service
     docker:
       - image: cimg/node:16.14.0-browsers
     steps:
+      - browser-tools/install-browser-tools
       - checkout
+      - run: |
+          node --version
+          java --version
+          google-chrome --version
+          firefox --version
+          which google-chrome
+          which firefox
       - restore_cache: # special step to restore the dependency cache https://circleci.com/docs/2.0/caching/
           key: dependency-cache-{{ checksum "package-lock.json" }}
       - run:
