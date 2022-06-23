@@ -22,17 +22,7 @@ exports.config = {
       'goog:chromeOptions': {
         args: DEBUG ? [] : ['--headless', '--disable-gpu']
       }
-    },
-    ...(
-      DEBUG
-        ? []
-        : [
-            {
-              browserName: 'firefox',
-              'moz:firefoxOptions': { args: ['-headless'] }
-            }
-          ]
-    )
+    }
   ],
   logLevel: 'error',
   baseUrl: 'http://localhost:8080',
