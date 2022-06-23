@@ -7,6 +7,11 @@ jobs:
     docker:
       - image: cimg/node:16.15.1-browsers
     steps:
+      - run:
+        # See https://github.com/CircleCI-Public/browser-tools-orb/issues/38
+        command: |
+          apt-get update
+          apt-get install libasound-dev
       - browser-tools/install-browser-tools
       - checkout
       - restore_cache: # special step to restore the dependency cache https://circleci.com/docs/2.0/caching/
