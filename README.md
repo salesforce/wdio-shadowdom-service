@@ -127,3 +127,4 @@ DEBUG=true npm test
 ```
 
 Then open `chrome:inspector` in Chrome and open the dedicated DevTools for Node.
+test
