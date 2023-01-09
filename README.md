@@ -1,4 +1,4 @@
-# wdio-shadowdom-service [![build status](https://circleci.com/gh/salesforce/wdio-shadowdom-service.svg?style=svg)](https://circleci.com/gh/salesforce/wdio-shadowdom-service)
+# wdio-shadowdom-service
 
 
 This is a plugin for [WebDriverIO](http://webdriver.io/) that transparently makes CSS selectors "just work" with the
