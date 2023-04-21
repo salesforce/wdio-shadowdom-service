@@ -4,6 +4,9 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
+strategy:
+  matrix:
+    wdio-version: [6, 7, default]
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -13,5 +16,10 @@ jobs:
         with:
           node-version: 16
       - run: npm ci
+      - run: |
+          for pkg in webdriverio @wdio/cli @wdio/local-runner @wdio/mocha-framework @wdio/spec-reporter; do \
+            npm install "$pkg"@${{ matrix.wdio-version }} --save-dev \
+          done
+        if: ${{ matrix.wdio-version  != 'default' }}
       - run: npm run lint
       - run: npm test
