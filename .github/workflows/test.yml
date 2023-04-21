@@ -21,6 +21,6 @@ jobs:
             npm install "$pkg"@${{ matrix.wdio-version }} --save-dev ;
           done
         if: ${{ matrix.wdio-version != 'default' }}
-        name: Install WebDriverIO version ${{ matrix.wdio-version }}
+        name: Install WebDriverIO
       - run: npm run lint
       - run: npm test
