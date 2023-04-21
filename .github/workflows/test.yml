@@ -7,11 +7,21 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        wdio-version: [ 6, 7, default ]
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: 16
       - run: npm ci
+      - run: |
+          for pkg in webdriverio @wdio/cli @wdio/local-runner @wdio/mocha-framework @wdio/spec-reporter; do
+            npm install "$pkg"@${{ matrix.wdio-version }} --save-dev ;
+          done ;
+        if: ${{ matrix.wdio-version != 'default' }}
+        name: Install WebDriverIO
+      - run: npx wdio --version
       - run: npm run lint
       - run: npm test
