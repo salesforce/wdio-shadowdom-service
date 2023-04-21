@@ -17,8 +17,8 @@ jobs:
           node-version: 16
       - run: npm ci
       - run: |
-          for pkg in webdriverio @wdio/cli @wdio/local-runner @wdio/mocha-framework @wdio/spec-reporter; do \
-            npm install "$pkg"@${{ matrix.wdio-version }} --save-dev \
+          for pkg in webdriverio @wdio/cli @wdio/local-runner @wdio/mocha-framework @wdio/spec-reporter; do
+            npm install "$pkg"@${{ matrix.wdio-version }} --save-dev ;
           done
         if: ${{ matrix.wdio-version  != 'default' }}
       - run: npm run lint
