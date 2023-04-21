@@ -20,8 +20,8 @@ jobs:
           for pkg in webdriverio @wdio/cli @wdio/local-runner @wdio/mocha-framework @wdio/spec-reporter; do
             npm install "$pkg"@${{ matrix.wdio-version }} --save-dev ;
           done ;
-          npx wdio --version ;
         if: ${{ matrix.wdio-version != 'default' }}
         name: Install WebDriverIO
+      - run: npx wdio --version
       - run: npm run lint
       - run: npm test
