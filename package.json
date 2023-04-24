@@ -50,8 +50,8 @@
     "chai": "^4.3.6",
     "chai-as-promised": "^7.1.1",
     "express": "^4.17.3",
-    "husky": "^4.3.8",
-    "lint-staged": "^10.5.4",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.1",
     "selenium-standalone": "^8.3.0",
     "standard": "^16.0.4",
     "webdriverio": "^8.8.6"
