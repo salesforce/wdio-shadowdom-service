@@ -16,6 +16,8 @@ jobs:
         with:
           node-version: 18
       - uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: stable
       - run: chrome --version
       - run: /usr/bin/google-chrome --version
       - run: /usr/bin/chromium --version
