@@ -4,7 +4,7 @@
   "description": "Plugin for webdriver.io to transparently make CSS selectors \"just work\" with shadow DOM",
   "main": "index.js",
   "scripts": {
-    "pretest": "selenium-standalone install",
+    "pretest": "selenium-standalone install ${CI_SELENIUM_STANDALONE_FLAGS}",
     "test": "wdio",
     "lint": "standard",
     "lint:fix": "standard --fix"
