@@ -15,12 +15,11 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-      - name: Print Chrome version
-        run: /usr/bin/google-chrome --version
-      - name: Print Chromium version
-        run: /usr/bin/chromium --version
-      - name: Print ChromeDriver version
-        run: /usr/bin/chromedriver --version
+      - uses: browser-actions/setup-chrome@v1
+      - run: chrome --version
+      - run: /usr/bin/google-chrome --version
+      - run: /usr/bin/chromium --version
+      - run: /usr/bin/chromedriver --version
       - run: npm ci
       - run: |
           for pkg in webdriverio @wdio/cli @wdio/local-runner @wdio/mocha-framework @wdio/spec-reporter; do
