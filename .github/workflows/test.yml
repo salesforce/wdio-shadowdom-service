@@ -4,9 +4,6 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
-env:
-  # temporary fix for github actions chrome version being out of date
-  CI_SELENIUM_STANDALONE_FLAGS: "--drivers.chrome.version=117.0.5938.149"
 jobs:
   build:
     runs-on: ubuntu-latest
