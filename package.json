@@ -50,12 +50,12 @@
     "chai": "^4.3.6",
     "chai-as-promised": "^7.1.1",
     "express": "^4.17.3",
-    "selenium-standalone": "^8.3.0",
+    "selenium-standalone": "^9.5.0",
     "standard": "^16.0.4",
     "webdriverio": "^8.8.6"
   },
   "volta": {
-    "node": "16.15.1",
-    "npm": "8.13.0"
+    "node": "20.12.2",
+    "npm": "10.5.2"
   }
 }
