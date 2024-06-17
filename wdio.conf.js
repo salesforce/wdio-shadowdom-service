@@ -8,6 +8,8 @@ const services = require('./test/services')
 const plugin = require('./index.js')
 
 const { DEBUG } = process.env
+const chromeBinary = process.env.CHROME_BINARY
+const chromedriverBinary = process.env.CHROMEDRIVER_BINARY
 
 exports.config = {
   automationProtocol: 'webdriver',
@@ -20,8 +22,14 @@ exports.config = {
     {
       browserName: 'chrome',
       'goog:chromeOptions': {
-        args: DEBUG ? [] : ['--headless', '--disable-gpu']
-      }
+        args: DEBUG ? [] : ['--headless', '--disable-gpu'],
+        ...(chromeBinary && { binary: chromeBinary })
+      },
+      ...(chromedriverBinary && {
+        'wdio:chromedriverOptions': {
+          binary: chromedriverBinary
+        }
+      })
     }
   ],
   logLevel: 'error',

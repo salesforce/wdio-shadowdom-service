@@ -4,6 +4,8 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
+env:
+    CHROMEDRIVER_BINARY: './node_modules/chromedriver/lib/chromedriver/chromedriver' # pin wdio to local chromedriver
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -31,6 +33,6 @@ jobs:
           done ;
         if: ${{ matrix.wdio-version != 'default' }}
         name: Install WebDriverIO
-      - run: npx wdio --version
+      - run: CHROME_BINARY=${{ steps.setup-chrome.outputs.chrome-path }} npx wdio --version
       - run: npm run lint
       - run: npm test
