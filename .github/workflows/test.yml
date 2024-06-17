@@ -15,7 +15,16 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 20
+      # Needed for local browser integration tests
+      # chrome-version documentation can be found here: https://github.com/browser-actions/setup-chrome?tab=readme-ov-file#usage
+      - name: Setup chrome v124
+        uses: browser-actions/setup-chrome@v1
+        with:
+            chrome-version: 125
       - run: npm ci
+      # Pin chromedriver to the same version as Chrome above
+      - name: Install chromedriver v125
+        run: yarn add -W chromedriver@^125
       - run: |
           for pkg in webdriverio @wdio/cli @wdio/local-runner @wdio/mocha-framework @wdio/spec-reporter; do
             npm install "$pkg"@${{ matrix.wdio-version }} --save-dev ;
